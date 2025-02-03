@@ -1,0 +1,73 @@
+{% extends 'players/general/base.html' %}
+
+{% block first_third %}
+    <p>
+    {% if player.photo %}
+    <img src="{{ player.photo.url }}" class="w3-border w3-round" style="width:100%;max-width:400px">
+        {% else %}
+        <h4 class="w3-center">No photo available.</h4>
+    {% endif %}
+    </p>
+{% endblock %}
+
+
+{% block second_third %}
+    <br>
+    <div class=>
+    <header class="w3-container w3 w3-blue-gray">
+    <h4>{{ player.surname }}, {{ player.name }}</h4>
+    </header>
+
+    <ul>
+        {% for key,value in details %}
+            {{ key }} : {{ value }}<br>
+         {% endfor %}
+        Age : {{ age }}
+    </ul>
+    </div>
+    <br>
+
+    <div class="w3-container">
+    <p>Concerts:</p>
+    {% if concerts %}
+    <ul class="w3-ul">
+        {% for concert in concerts %}
+            <p><li class="w3-hover-shadow"><a href="{% url 'players:concert_detail' concert.id %}">
+                {{ concert.place }}, {{ concert.concert_time }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <ul>
+        <p style="font-size: small">No concerts available.</p>
+        </ul>
+    {% endif %}
+    <br>
+    </div>
+{% endblock second_third %}
+
+{%block third_third %}
+    <div class="w3-container">
+    <p><a href="{% url 'players:reviews' player.id %}" class="w3-button w3-black">Browse reviews</a></p>
+    <p><a href="{% url 'players:player_modify' player.id %}" class="w3-button w3-black">Modify Player</a></p>
+    <p><a href="{% url 'players:players_summary' %}" class="w3-button w3-gray">Back to players</a></p>
+    <br>
+
+    <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-border">Delete player</button>
+
+    <div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <p>Are you sure you want to delete?</p>
+          <div class="w3-container w3-center" style="resize: horizontal">
+              <a href="{% url 'players:player_delete' player.id %}" class="w3-button w3-black w3-margin-right">Yes</a>
+              <a href="{% url 'players:player_detail' player.id %}" class="w3-button w3-black w3-margin-left">No</a>
+              <br></br>
+          </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

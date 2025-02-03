@@ -1,0 +1,44 @@
+{% extends 'players/general/base.html' %}
+
+{% block second_third %}
+<div class="w3-container">
+<p>
+    {% for name,info in details %}
+        {{ name }} : {{ info }}<br>
+
+     {% endfor %}
+</p>
+</div>
+
+<div class="w3-container">
+<p>Player(s):<br>
+<ul class="w3-ul">
+    {% for player in players %}
+        <li class="w3-hover-shadow"><a href="{% url 'players:player_detail' player.id %}">{{ player.surname }}, {{ player.name }}</a><br></li>
+    {% endfor %}
+</ul></p>
+<br>
+</div>
+{% endblock %}
+
+{% block third_third %}
+<p><a href="{% url 'players:concert_modify' concert.id %}" class="w3-button w3-black">Modify Concert</a></p>
+<p><a href="{% url 'players:concerts_summary' %}" class="w3-button w3-gray">Back to Concerts Summary</a></p>
+<br>
+
+<p><button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-border">Delete concert</button>
+
+    <div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <p>Are you sure you want to delete?</p>
+          <div class="w3-container w3-center" style="resize: horizontal">
+              <a href="{% url 'players:concert_delete' concert.id %}" class="w3-button w3-black w3-margin-right">Yes</a>
+              <a href="{% url 'players:concert_detail' concert.id %}" class="w3-button w3-black w3-margin-left">No</a>
+              <br></br>
+          </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

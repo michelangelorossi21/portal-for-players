@@ -1,0 +1,44 @@
+{% extends 'players/general/base.html' %}
+
+
+{% block first_third %}
+    <div class="w3-center">
+    {% if reviews_list %}
+        <p>Total reviews: {{ count }} &emsp;
+        <p>Average rating: {{ average }}/5</p>
+    {% endif %}
+    <br>
+    <p><a href="{% url 'players:review_insert' player_id %}" class="w3-button w3-black">Insert new review</a> </p>
+    <p><a href="{% url 'players:player_detail' player_id %}" class="w3-button w3-gray">Back to player's page</a> </p>
+    </div>
+{% endblock %}
+
+
+{% block second_third %}
+    <p>
+    {% if reviews_list %}
+        <ul class="w3-ul">
+        {% for review in reviews_list %}
+            <div class="w3-container w3-hover-shadow w3-card-2">
+            <p>
+                <strong>{{ review.title }}</strong><br>
+                Rating:  {{ review.rating }} out of 5<br>
+                Published:  {{ review.pub_date }}<br>
+                Text:
+                {{ review.text }}<br>
+                <div class="w3-container">
+                <p><a href="{% url 'players:review_modify' player_id review.id %}" class="w3-button w3-border">Modify review</a>
+                <a href="{% url 'players:review_delete' player_id review.id %}" class="w3-button w3-border w3-right">Delete review</a></p>
+              </div>
+
+            </div>
+            <br>
+            {% endfor %}
+        </ul>
+            </p>
+    {% else %}
+        <div class="w3-panel w3-pale-red w3-leftbar w3-border-red"><h4>No reviews are available.</h4></div><br>
+
+    {% endif %}
+{% endblock %}
+

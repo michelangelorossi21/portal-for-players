@@ -1,0 +1,33 @@
+{% extends 'players/general/base.html' %}
+
+{% block first_third %}
+
+<h4>Select a player:</h4>
+    <br>
+    <div class="w3-container">
+    {% if players_list %}
+        <ul class="w3-ul">
+        {% for player in players_list %}
+        <li class="w3-hover-shadow"><a href = "{% url 'players:player_detail' player.id %}">
+            {{ player.surname }}, {{ player.name }}</a></li><br>
+        {% endfor %}
+        </ul>
+
+    {% else %}
+        <p class="w3-panel w3-pale-red w3-leftbar w3-border-red">No players are available.</p>
+        <a href="{% url 'players:home' %}" class="w3-button w3-gray">Back to Main Page</a>
+    {% endif %}
+
+    <br>
+    </div>
+    <div class="w3-container" style="font-size:small">
+    </div>
+
+{% endblock %}
+
+
+{% block third_third %}
+    <p><a href="{% url 'players:player_insert' %}" class="w3-button w3-black">Insert new player</a></p>
+    <p><a href="{% url 'players:home' %}" class="w3-button w3-gray">Back to Main Page</a></p>
+{% endblock %}
+

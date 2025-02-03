@@ -1,0 +1,24 @@
+{% extends 'players/general/base.html' %}
+
+{% block second_third %}
+    <h4>Select a concert:</h4>
+    <br>
+{% if concerts_list %}
+    <ul class="w3-ul">
+    {% for concert in concerts_list %}
+    <li class="w3-hover-shadow"><a href = "{% url 'players:concert_detail' concert.id %}">
+        {{ concert.place }}, {{ concert.concert_time }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No concerts are available.</p>
+    <a href="{% url 'players:home' %}">Back to Main Page</a>
+{% endif %}
+    <br>
+{% endblock %}
+
+{% block third_third %}
+<p><a href="{% url 'players:concert_insert' %}" class="w3-button w3-black">Insert new concert</a></p>
+<p><a href="{% url 'players:home' %}" class="w3-button w3-gray">Back to Main Page</a></p>
+{% endblock %}
+

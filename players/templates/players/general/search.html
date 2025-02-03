@@ -1,0 +1,32 @@
+{% extends 'players/general/base.html' %}
+
+{% block second_third %}
+    {% if searched %}
+        <h3>You searched for "{{ searched }}"</h3>
+        <br>
+        {% if players %}
+            <h3>Player(s) found:</h3>
+            <ul class="w3-ul w3-container">
+            {% for player in players %}
+                <li class="w3-hover-shadow">
+                <a href="{% url 'players:player_detail' player.id %}">{{ player.surname }}, {{ player.name }}</a></li>
+            {% endfor %}
+        {% endif %}
+        </ul>
+
+    <br>
+
+    {% if concerts %}
+        <h3>Concert(s) found:</h3>
+        <ul class="w3-ul w3-container">
+        {% for concert in concerts %}
+            <li class="w3-hover-shadow"><a href="{% url 'players:concert_detail' concert.id %}">{{ concert }}</a></li>
+        {% endfor %}
+    {% endif %}
+    </ul>
+
+    {% else %}
+        <h3>No items searched. Retry</h3>
+        {% endif %}
+<br>
+{% endblock %}

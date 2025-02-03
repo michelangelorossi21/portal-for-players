@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'players/mystyle.css' %}">
+    <meta charset="UTF-8">
+    <title>{% block title %}P f P | A Portal for Players{% endblock %}</title>
+</head>
+
+<body>
+    <div id="header" class="w3-container w3-blue-grey w3-text-white">
+        {% block header %}
+        <h1>A Portal for Players</h1>
+        <h4>Manage players and concerts</h4>
+
+        <div class="w3-bar w3-border w3-round w3-black ">
+            <a href="{% url 'players:home' %}" class="w3-bar-item w3-button">Home</a>
+
+            <div class="w3-dropdown-hover">
+                <button class="w3-button">Players</button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="{% url 'players:players_summary' %}" class="w3-bar-item w3-button">Browse Players</a>
+                    <a href="{% url 'players:player_insert' %}" class="w3-bar-item w3-button">Insert new Player</a>
+                    <a href="{% url 'players:instruments' %}" class="w3-bar-item w3-button">Browse Instruments</a>
+                </div>
+            </div>
+
+            <div class="w3-dropdown-hover">
+                <button class="w3-button">Concerts</button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="{% url 'players:concerts_summary' %}" class="w3-bar-item w3-button">Browse Concerts</a>
+                    <a href="{% url 'players:concert_insert' %}" class="w3-bar-item w3-button">Insert new Concert</a>
+                </div>
+            </div>
+
+        <div class="w3-right">
+            <form class="w3-container" method="post" action="{% url 'players:search' %}">
+                {% csrf_token %}
+
+                <input type="search" placeholder="Search..." name="searched">
+                <input type="submit" value="Search">
+                </form>
+            </div>
+        </div>
+        {% endblock %}
+    </div>
+
+    <div id="content" class="w3-container w3-row-padding">
+        <div class="w3-container w3-third">{% block first_third %}{% endblock %}</div>
+        <div class="w3-container w3-third" >{% block second_third %}{% endblock %}</div>
+        <div class= "w3-container w3-third">
+            {% block third_third %}
+                <p><a href="{% url 'players:players_summary' %}" class="w3-button w3-gray">Go to Players summary</a></p>
+                <p><a href="{% url 'players:concerts_summary' %}" class="w3-button w3-gray">Go to Concerts summary</a></p>
+                <p><a href="{% url 'players:instruments' %}" class="w3-button w3-gray">Go to Instruments summary</a></p>
+            {% endblock %}</div>
+    </div>
+
+    <div id="footer" class="w3-container w3-blue-gray w3-text-white" style="font-size: small">
+        <ul>
+            @ 2023 Rossi Michelangelo | made with Django
+        </ul>
+    </div>
+
+</body>
+</html>

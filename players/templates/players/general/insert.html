@@ -1,0 +1,14 @@
+{% extends 'players/general/base.html' %}
+
+{%  block first_third %}
+<div class="w3-container">
+<form enctype="multipart/form-data" method="post" style="text-align-all: justify">
+{% csrf_token %}
+<table>
+{{ form.as_table }}
+</table><br>
+<input type="submit" value="Submit"/>
+</form>
+</div>
+<br>
+{% endblock %}
