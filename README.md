@@ -13,18 +13,21 @@ Plus, a search toolbar helps searching a player by name or instrument played, an
 - **Client-server architecture**
 
 ## 🚀 How to Run the Project  
-1. **Clone the repository:**  
+1. **Clone the repository:**
+   
    ```sh
    git clone https://github.com/michelangelorossi21/portal-for-players.git
    cd iot-concert-enviroment
 
 2. **Start server**
    In the terminal, type:
-   ```sh
-      python manage.py runserver
    
-4. **Open Browser**
-   In this simulated scenario, the server is locally host. Go to:
+   ```sh
+   python manage.py runserver
+   
+3. **Open Browser**
+
+   In this simulated scenario, the server is locally host. Open the web browser and go to:
    **127.0.0.1/home**
 
 ## 🔹 Key Features
