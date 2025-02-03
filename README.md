@@ -19,10 +19,11 @@ Plus, a search toolbar helps searching a player by name or instrument played, an
    cd iot-concert-enviroment
 
 2. **Start server**
+   In the terminal, type:
    ```sh
       python manage.py runserver
    
-3. **Open Browser**
+4. **Open Browser**
    In this simulated scenario, the server is locally host. Go to:
    **127.0.0.1/home**
 
