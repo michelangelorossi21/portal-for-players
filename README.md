@@ -1,16 +1,16 @@
-# A Portal for Players
+# 🎵 A Portal for Players 🎶
 
-## Description  
+## 📌 Description  
 A **Django-based Web Application** with **Responsive Design** that manages music players and concert. 
 Through an intuitive and web browser interface, Music Agencies can organize (add, delete, modify) players and concerts.
 **Every player receives reviews** (1 to 5 points and a brief written review) to help organizers choose the best musician for the next concert. 
 Plus, a search toolbar helps searching a player by name or instrument played, and concerts by date or locarion.
 
 ## 🛠 Technologies Used  
-- **Django framework**
-- **Python**
-- **SQLITE3**(used to create and manage models)
-- **Client-server architecture**
+- 🐍**Django framework**
+- 💻**Python**
+- 🗄️**SQLITE3**(used to create and manage models)
+- 🌍**Client-server architecture**
 
 ## 🚀 How to Run the Project  
 1. **Clone the repository:**
